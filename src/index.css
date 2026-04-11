@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #203c58;
+  --color-primary-light: #4d6685;
+  --color-primary-dark: #00162f;
+  --color-secondary: #be3c3c;
+  --color-secondary-light: #f66d67;
+  --color-secondary-dark: #870016;
+
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Oxygen-Sans", Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+}
