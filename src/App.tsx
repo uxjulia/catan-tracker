@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import random from "random";
 import { FaExpand, FaCompress } from "react-icons/fa6";
 import DiceChart from "./components/Chart";
@@ -30,7 +30,7 @@ function getResources(
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const rollDie = () => {
+  const rollDie = useCallback(() => {
     const roll1 = random.int(1, 6);
     const roll2 = random.int(1, 6);
     const roll12 = random.int(1, 12);
@@ -38,13 +38,13 @@ export default function App() {
     const total = roll1 + roll2;
     const resources = getResources(state.resources, total);
     dispatch({ type: "ROLL", payload: { roll: total, resources } });
-  };
+  }, [state.resources]);
 
-  const handleRoll = (value: number) => {
+  const handleRoll = useCallback((value: number) => {
     dispatch({ type: "CLEAR_DICE_ROLLS" });
     const resources = getResources(state.resources, value);
     dispatch({ type: "ROLL", payload: { roll: value, resources } });
-  };
+  }, [state.resources]);
 
   const handleUndo = () => {
     dispatch({ type: "UNDO" });
@@ -74,6 +74,11 @@ export default function App() {
           type: "SET_BOOL",
           payload: { key: "displayConfirmation", value: true },
         });
+      } else if (n === "FULLSCREEN") {
+        dispatch({
+          type: "SET_BOOL",
+          payload: { key: "fullScreen", value: !state.fullScreen },
+        });
       } else {
         dispatch({
           type: "SET_BOOL",
@@ -85,7 +90,7 @@ export default function App() {
 
     window.addEventListener("keydown", handlePress);
     return () => window.removeEventListener("keydown", handlePress);
-  });
+  }, [rollDie, handleRoll, state.fullScreen]);
 
   const lastRoll = state.log[0];
 

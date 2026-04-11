@@ -33,6 +33,7 @@ I built this for my own personal use, but maybe you'll find it helpful as well!
 | `1` or `-` | Log 11              |
 | `=`        | Log 12              |
 | `Z`        | Undo last roll      |
+| `F`        | Toggle full-screen  |
 | `N`        | Start new game      |
 
 ## Tech Stack

@@ -1,6 +1,6 @@
 function testLog(n: string): boolean {
   const x = n.toUpperCase();
-  if (x === "ROLL" || x === "UNDO" || x === "NEW") return true;
+  if (x === "ROLL" || x === "UNDO" || x === "NEW" || x === "FULLSCREEN") return true;
   const num = Number(n);
   return num >= 2 && num <= 13;
 }
@@ -30,6 +30,10 @@ function keyCode(x: string): string | false {
     case "n":
     case "N":
       n = "NEW";
+      break;
+    case "f":
+    case "F":
+      n = "FULLSCREEN";
       break;
     default:
       n = x;
