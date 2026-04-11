@@ -13,7 +13,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 interface Props {
   data: number[];
   lastRoll?: string;
-  fullScreen?: boolean;
 }
 
 const DiceChart = ({ data }: Props) => {

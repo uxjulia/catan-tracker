@@ -226,7 +226,6 @@ export default function App() {
               key={`${state.rolls.join(",")}-${state.fullScreen}`}
               lastRoll={lastRoll}
               data={state.rolls}
-              fullScreen={state.fullScreen}
             />
             {state.showDiceLog && <LoggedRolls data={state.log} />}
             {state.showResourceLog && (
